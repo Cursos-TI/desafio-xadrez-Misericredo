@@ -1,91 +1,101 @@
 #include <stdio.h>
 
+// ==============================
+// FUNÇÕES RECURSIVAS DAS PEÇAS
+// ==============================
+
+// ----------------------------
+// Movimento da Torre (recursivo)
+// ----------------------------
+void moverTorre(int casas) {
+    if (casas <= 0) return;  // condição de parada
+    printf("Direita\n");
+    moverTorre(casas - 1);   // chamada recursiva
+}
+
+// ----------------------------
+// Movimento da Rainha (recursivo)
+// ----------------------------
+void moverRainha(int casas) {
+    if (casas <= 0) return;  // condição de parada
+    printf("Esquerda\n");
+    moverRainha(casas - 1);  // chamada recursiva
+}
+
+// ----------------------------
+// Movimento do Bispo (recursivo + loops aninhados)
+// ----------------------------
+void moverBispo(int vertical, int horizontal) {
+    if (vertical <= 0) return;  // condição de parada vertical
+
+    for (int h = 1; h <= horizontal; h++) { // loop horizontal
+        printf("Cima, Direita\n");
+    }
+
+    moverBispo(vertical - 1, horizontal); // recursão vertical
+}
+
+// ==============================
+// FUNÇÃO PRINCIPAL
+// ==============================
 int main() {
 
-    // ===============================================
-    // NÍVEL NOVATO — Movimentação das Peças
-    // ===============================================
+    // ------------------------
+    // Nível Mestre - Movimentos complexos
+    // ------------------------
+    printf("=== Movimentos das Pecas ===\n\n");
 
     // ------------------------
-    // MOVIMENTO DA TORRE (for)
+    // Torre
     // ------------------------
     int torreCasas = 5;
-
-    printf("=== Movimento da Torre ===\n");
-    for (int i = 1; i <= torreCasas; i++) {
-        printf("Direita (%d)\n", i);
-    }
+    printf("=== Torre ===\n");
+    moverTorre(torreCasas);
     printf("\n");
 
     // ------------------------
-    // MOVIMENTO DO BISPO (while)
+    // Bispo
     // ------------------------
-    int bispoCasas = 5;
-    int contador = 1;
-
-    printf("=== Movimento do Bispo ===\n");
-    while (contador <= bispoCasas) {
-        printf("Cima, Direita (%d)\n", contador);
-        contador++;
-    }
+    int bispoVertical = 5;
+    int bispoHorizontal = 1; // cada passo diagonal = 1 horizontal
+    printf("=== Bispo ===\n");
+    moverBispo(bispoVertical, bispoHorizontal);
     printf("\n");
 
     // ------------------------
-    // MOVIMENTO DA RAINHA (do-while)
+    // Rainha
     // ------------------------
     int rainhaCasas = 8;
-    int r = 1;
-
-    printf("=== Movimento da Rainha ===\n");
-    do {
-        printf("Esquerda (%d)\n", r);
-        r++;
-    } while (r <= rainhaCasas);
+    printf("=== Rainha ===\n");
+    moverRainha(rainhaCasas);
     printf("\n");
 
-
-    // ===============================================
-    // NÍVEL AVENTUREIRO — Movimento do Cavalo
-    // ===============================================
-
-    printf("=== Movimento do Cavalo (FOR + WHILE) ===\n");
-
-    int movimentosBaixo = 2;      // Cavalo anda 2 casas para baixo
-    int movimentosEsquerda = 1;   // Cavalo anda 1 casa para a esquerda
-
-
     // ------------------------
-    // Parte 1: 2 casas para baixo
-    // Loop externo: FOR
-    // Loop interno: WHILE (executa 1 vez)
+    // Cavalo (loops complexos, movimento "L": 2 cima + 1 direita)
     // ------------------------
-    for (int i = 1; i <= movimentosBaixo; i++) {
+    printf("=== Cavalo ===\n");
 
-        int controle = 1;
-        while (controle == 1) {
-            printf("Baixo (%d)\n", i);
-            controle++; // encerra o while
+    int movimentosCima = 2;
+    int movimentosDireita = 1;
+
+    // Loop aninhado complexo com múltiplas variáveis
+    for (int i = 1; i <= movimentosCima; i++) {
+        int j = 1;
+        while (j <= 1) {
+            printf("Cima (%d)\n", i);
+            j++;
         }
     }
 
-
-    // ------------------------
-    // Parte 2: 1 casa para a esquerda
-    // Loop externo: WHILE
-    // Loop interno: FOR
-    // ------------------------
     int passo = 1;
-
-    while (passo <= movimentosEsquerda) {
-
-        for (int j = 1; j <= 1; j++) {
-            printf("Esquerda (%d)\n", passo);
+    while (passo <= movimentosDireita) {
+        for (int k = 1; k <= 1; k++) {
+            printf("Direita (%d)\n", passo);
         }
-
         passo++;
     }
 
-    printf("\n");
+    printf("\nFim dos movimentos.\n");
 
     return 0;
 }
