@@ -1,49 +1,89 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Nível Novato: Movimentação das Peças (Torre, Bispo e Rainha)
-// Autor: Gabriel (ou coloque seu nome)
-// Objetivo: Demonstrar movimentação básica usando for, while e do-while
-
 int main() {
 
-    // ==========================
-    // CONFIGURAÇÃO DOS MOVIMENTOS
-    // ==========================
+    // ===============================================
+    // NÍVEL NOVATO — Movimentação das Peças
+    // ===============================================
 
-    int casasTorre = 5;   // Torre anda 5 casas para a Direita
-    int casasBispo = 5;   // Bispo anda 5 casas na diagonal "Cima, Direita"
-    int casasRainha = 8;  // Rainha anda 8 casas para a Esquerda
+    // ------------------------
+    // MOVIMENTO DA TORRE (for)
+    // ------------------------
+    int torreCasas = 5;
 
-    // ===================================
-    // MOVIMENTAÇÃO DA TORRE — usando FOR
-    // ===================================
-    printf("=== Movimento da Torre (FOR) ===\n");
-    for (int i = 1; i <= casasTorre; i++) {
+    printf("=== Movimento da Torre ===\n");
+    for (int i = 1; i <= torreCasas; i++) {
         printf("Direita (%d)\n", i);
     }
     printf("\n");
 
-    // ====================================================
-    // MOVIMENTAÇÃO DO BISPO — usando WHILE (diagonal)
-    // ====================================================
-    printf("=== Movimento do Bispo (WHILE) ===\n");
-    int contadorBispo = 1;
-    while (contadorBispo <= casasBispo) {
-        printf("Cima, Direita (%d)\n", contadorBispo);
-        contadorBispo++;
+    // ------------------------
+    // MOVIMENTO DO BISPO (while)
+    // ------------------------
+    int bispoCasas = 5;
+    int contador = 1;
+
+    printf("=== Movimento do Bispo ===\n");
+    while (contador <= bispoCasas) {
+        printf("Cima, Direita (%d)\n", contador);
+        contador++;
     }
     printf("\n");
 
-    // ========================================================
-    // MOVIMENTAÇÃO DA RAINHA — usando DO-WHILE
-    // ========================================================
-    printf("=== Movimento da Rainha (DO-WHILE) ===\n");
-    int contadorRainha = 1;
+    // ------------------------
+    // MOVIMENTO DA RAINHA (do-while)
+    // ------------------------
+    int rainhaCasas = 8;
+    int r = 1;
+
+    printf("=== Movimento da Rainha ===\n");
     do {
-        printf("Esquerda (%d)\n", contadorRainha);
-        contadorRainha++;
-    } while (contadorRainha <= casasRainha);
+        printf("Esquerda (%d)\n", r);
+        r++;
+    } while (r <= rainhaCasas);
+    printf("\n");
+
+
+    // ===============================================
+    // NÍVEL AVENTUREIRO — Movimento do Cavalo
+    // ===============================================
+
+    printf("=== Movimento do Cavalo (FOR + WHILE) ===\n");
+
+    int movimentosBaixo = 2;      // Cavalo anda 2 casas para baixo
+    int movimentosEsquerda = 1;   // Cavalo anda 1 casa para a esquerda
+
+
+    // ------------------------
+    // Parte 1: 2 casas para baixo
+    // Loop externo: FOR
+    // Loop interno: WHILE (executa 1 vez)
+    // ------------------------
+    for (int i = 1; i <= movimentosBaixo; i++) {
+
+        int controle = 1;
+        while (controle == 1) {
+            printf("Baixo (%d)\n", i);
+            controle++; // encerra o while
+        }
+    }
+
+
+    // ------------------------
+    // Parte 2: 1 casa para a esquerda
+    // Loop externo: WHILE
+    // Loop interno: FOR
+    // ------------------------
+    int passo = 1;
+
+    while (passo <= movimentosEsquerda) {
+
+        for (int j = 1; j <= 1; j++) {
+            printf("Esquerda (%d)\n", passo);
+        }
+
+        passo++;
+    }
 
     printf("\n");
 
